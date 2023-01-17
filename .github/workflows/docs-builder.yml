@@ -32,24 +32,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         id: pnpm-install
         with:
           version: 7.25.0
           run_install: false
-
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
