@@ -37,13 +37,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 7.25.0
-          run_install: false
-
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
@@ -54,14 +47,14 @@ jobs:
           static_site_generator: next
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: Build with Next.js
         id: next-build
-        run: pnpm build
+        run: npm build
 
       - name: Static HTML export with Next.js
-        run: pnpx next export
+        run: npx next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
