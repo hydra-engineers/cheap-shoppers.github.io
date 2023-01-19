@@ -51,7 +51,7 @@ jobs:
 
       - name: Build with Next.js
         id: next-build
-        run: npm build
+        run: npm run build
 
       - name: Static HTML export with Next.js
         run: npx next export
